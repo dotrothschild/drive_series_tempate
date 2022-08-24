@@ -22,4 +22,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
         Timber.d("Done")
     }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 }

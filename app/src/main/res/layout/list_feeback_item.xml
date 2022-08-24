@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewFeedbackTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="Title here" />
+
+    <TextView
+        android:id="@+id/textViewRDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/textViewFeedbackTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFeedbackTitle"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Description here" />
+
+    <TextView
+        android:id="@+id/textViewFeedbackSubTitle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRDescription"
+        app:layout_constraintLeft_toLeftOf="@+id/textViewFeedbackTitle"
+        tools:text="Sub title 1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

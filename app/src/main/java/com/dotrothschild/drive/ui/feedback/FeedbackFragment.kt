@@ -1,4 +1,4 @@
-package com.dotrothschild.drive.ui.main
+package com.dotrothschild.drive.ui.feedback
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,21 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dotrothschild.drive.DriveApp
-import com.dotrothschild.drive.databinding.FragmentMainBinding
+import com.dotrothschild.drive.databinding.FragmentFeedbackBinding
 import kotlinx.coroutines.launch
 
-class MainFragment : Fragment() {
 
-    private  val mainViewModel: MainViewModel by activityViewModels {
-        MainViewModelFactory(
+class FeedbackFragment : Fragment() {
+
+    private  val feedbackViewModel: FeedbackViewModel by activityViewModels {
+        FeedbackViewModel.FeedbackViewModelFactory(
             (activity?.application as DriveApp).database.driveDao()
         )
     }
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: FragmentFeedbackBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
 
@@ -29,7 +29,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = FragmentFeedbackBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
@@ -38,20 +38,13 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val listFeedbackAdapter = ListFeedbackAdapter {
 
-        // the onClick event added
-        val listPlaceAdapter = ListPlaceAdapter {
-            val action = MainFragmentDirections
-                .actionNavigationMainToNavigationFeedback(
-                    id = it.id
-                )
-            view.findNavController().navigate(action)
         }
-
-        recyclerView.adapter = listPlaceAdapter
+        recyclerView.adapter = listFeedbackAdapter
         lifecycle.coroutineScope.launch{
-            mainViewModel.allPlaces().collect() {
-                listPlaceAdapter.submitList(it)
+            feedbackViewModel.allFeedback().collect() {
+                listFeedbackAdapter.submitList(it)
             }
         }
     }

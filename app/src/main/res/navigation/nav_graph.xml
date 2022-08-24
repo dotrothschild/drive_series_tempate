@@ -8,5 +8,18 @@
         android:id="@+id/navigation_main"
         android:name="com.dotrothschild.drive.ui.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_navigation_main_to_navigation_feedback"
+            app:destination="@id/navigation_feedback" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_feedback"
+        android:name="com.dotrothschild.drive.ui.feedback.FeedbackFragment"
+        android:label="fragment_feedback"
+        tools:layout="@layout/fragment_feedback">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>
