@@ -4,9 +4,7 @@ import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Entity(
@@ -19,7 +17,4 @@ data class Feedback(
     @NonNull @ColumnInfo(name = "place_id") val place_id: Int,
     @NonNull @ColumnInfo(name = "user_name") val user_name: String,
     @NonNull @ColumnInfo(name = "comment") val comment: String
-  //  @SerializedName("place_id") val placeId : Int,
-  //  @SerializedName("user_name") val userName : String,
-  //  @SerializedName("comment") val comment : String
 ) : Parcelable

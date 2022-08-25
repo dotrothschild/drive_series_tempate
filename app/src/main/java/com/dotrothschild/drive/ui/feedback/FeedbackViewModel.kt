@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.Flow
 
 
 class FeedbackViewModel(private val driveDao: DriveDao): ViewModel() {
-    fun allFeedback(): Flow<List<Feedback>> = driveDao.getAllFeedback()
-
+    // fun allFeedback(): Flow<List<Feedback>> = driveDao.getAllFeedback() // This returns every record, works not used used
+    fun feedbackByPlace(placeId: Int): Flow<List<Feedback>> = driveDao.getFeedbackByPlace(placeId) // this works, returns place id not name
     class FeedbackViewModelFactory(
         private val driveDao: DriveDao
     ) : ViewModelProvider.Factory {

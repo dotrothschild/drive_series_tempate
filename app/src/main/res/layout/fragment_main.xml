@@ -10,8 +10,8 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/bus_stop_header"
-        android:layout_width="0dp"
+        android:id="@+id/no_places_to_show"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Placeholder 1"
         android:textSize="16sp"
@@ -19,28 +19,13 @@
         android:padding="8dp"
         app:layout_constraintWidth_percent="0.5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/arrival_time_header"
         app:layout_constraintEnd_toStartOf="parent"/>
-
-    <TextView
-        android:id="@+id/arrival_time_header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Placeholder 2"
-        android:textSize="16sp"
-        android:gravity="center_horizontal"
-        android:padding="8dp"
-        app:layout_constraintWidth_percent="0.5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/bus_stop_header"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layout_constraintTop_toBottomOf="@id/bus_stop_header"
+        app:layout_constraintTop_toBottomOf="@id/no_places_to_show"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

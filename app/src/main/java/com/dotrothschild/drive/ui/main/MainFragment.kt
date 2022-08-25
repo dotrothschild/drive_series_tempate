@@ -30,8 +30,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,15 +42,20 @@ class MainFragment : Fragment() {
         val listPlaceAdapter = ListPlaceAdapter {
             val action = MainFragmentDirections
                 .actionNavigationMainToNavigationFeedback(
-                    id = it.id
+                    placeId = it.id
                 )
             view.findNavController().navigate(action)
         }
 
         recyclerView.adapter = listPlaceAdapter
         lifecycle.coroutineScope.launch{
-            mainViewModel.allPlaces().collect() {
+            mainViewModel.allPlaces().collect {
                 listPlaceAdapter.submitList(it)
+                if (it.isEmpty()) {
+                    _binding!!.noPlacesToShow.text  = "No places to display."
+                } else {
+                    _binding!!.noPlacesToShow.text  = "Total places: ${listPlaceAdapter.itemCount}"
+                }
             }
         }
     }

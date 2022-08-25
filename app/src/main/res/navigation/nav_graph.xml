@@ -19,7 +19,7 @@
         android:label="fragment_feedback"
         tools:layout="@layout/fragment_feedback">
         <argument
-            android:name="id"
+            android:name="place_id"
             app:argType="integer" />
     </fragment>
 </navigation>
